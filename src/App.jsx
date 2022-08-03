@@ -1,13 +1,23 @@
 import React from 'react'
-import { Button } from 'antd';
 import { Outlet } from 'react-router-dom'
+import { Layout } from 'antd';
+import Header from './components/Header';
+
+const { Sider, Content } = Layout;
 
 export default function App() {
     return (
-        <div>
-            App....
-            <Button type="primary">Primary Button</Button>
-            <Outlet></Outlet>
-        </div>
+        <Layout id='app'>
+            <Header></Header>
+            <Layout>
+                <Sider>Sider</Sider>
+                <Content>
+                    <div>
+                        <Outlet></Outlet>
+                    </div>
+                </Content>
+            </Layout>
+            <footer>Footer</footer>
+        </Layout>
     )
 }
