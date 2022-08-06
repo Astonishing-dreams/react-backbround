@@ -4,9 +4,10 @@ import logoImg from '../assets/images/logo.png'
 import imgAvatar from '../assets/images/imgAvatar.jpg'
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space, message } from 'antd';
+import { connect } from 'react-redux';
 
 
-export default function Header() {
+function Header(props) {
     const navigate = useNavigate()
     const [avatar, setAvatar] = useState(imgAvatar)
     const [username, setUsername] = useState('游客')
@@ -16,8 +17,9 @@ export default function Header() {
         let avatarNew = localStorage.getItem('avatar')
         if (usernameNew) setUsername(usernameNew)
         if (avatarNew) setAvatar('http://47.93.114.103:6688/' + avatarNew)
-        console.log(localStorage.getItem('avatar'));
-    }, [localStorage.getItem('avatar')])
+        // console.log(props, '111');
+        // console.log(props.myKey);
+    }, [props.myKey])
 
     const menuThings = ({ key }) => {
         if (key === '2') {
@@ -69,3 +71,12 @@ export default function Header() {
         </header>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        myKey: state.myKey
+    }
+}
+
+export default connect(mapStateToProps, null)(Header)
+

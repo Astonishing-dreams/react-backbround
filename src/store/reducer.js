@@ -8,8 +8,7 @@ export default (state = defaultState, actions) => {
     let newState = JSON.parse(JSON.stringify(state))
     switch (actions.type) {
         case 'addKeyFn':
-            newState.myKey++
-            break
+            return newState.myKey++
         default:
             break;
     }

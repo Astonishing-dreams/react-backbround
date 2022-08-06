@@ -23,10 +23,3 @@ export default function App(props) {
     )
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         myKey: state.myKey
-//     }
-// }
-
-// export default connect(mapStateToProps)(App)

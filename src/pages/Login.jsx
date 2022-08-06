@@ -15,7 +15,7 @@ export default function Login() {
             username: values.username,
             password: values.password
         }).then(res => {
-            console.log(res);
+            // console.log(res);
             if (res.errCode === 0) {
                 localStorage.setItem('avatar', res.data.avatar)
                 localStorage.setItem('cms-token', res.data['cms-token'])
@@ -24,7 +24,7 @@ export default function Login() {
                 localStorage.setItem('username', res.data.username)
                 setTimeout(() => {
                     message.success('登录成功!')
-                    navigate('/')
+                    navigate('/list1')
                 }, 1000);
             } else {
                 message.error(res.message)

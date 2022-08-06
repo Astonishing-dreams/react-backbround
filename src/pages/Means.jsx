@@ -4,6 +4,7 @@ import './Less/Means.less'
 import { GetUserDataApi, ChangeUserApi } from '../request/api'
 import { Button, Form, Input, message, Upload } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
 
 // 将图片改为base64的格式
 const getBase64 = (img, callback) => {
@@ -29,7 +30,7 @@ const beforeUpload = (file) => {
     return isJpgOrPng && isLt2M;
 };
 
-export default function Means() {
+function Means(props) {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState();
@@ -78,12 +79,14 @@ export default function Means() {
                 setLoading(false);
                 setImageUrl(url);
                 // 存储图片名称
-                console.log(localStorage.getItem('avatar'));
+                // console.log(localStorage.getItem('avatar'));
                 localStorage.setItem('avatar', info.file.response.data.filePath)
-                console.log(localStorage.getItem('avatar'));
+                // console.log(localStorage.getItem('avatar'));
                 // 触发Header组件更新
-                window.location.reload() // 强制页面刷新（不是很理想）
-                // props.addKey() // 失败品
+                // window.location.reload() // 强制页面刷新（不是很理想）
+                // console.log(props);
+                props.addKey() // 失败品
+                // console.log(props.myKey);
             });
         }
     };
@@ -148,13 +151,19 @@ export default function Means() {
 }
 
 // 失败品
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addKey() {
-//             const action = { type: 'addKeyFn' }
-//             dispatch(action)
-//         }
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addKey() {
+            const action = { type: 'addKeyFn' }
+            dispatch(action)
+        }
+    }
+}
 
-// export default connect(null, mapDispatchToProps)(Means)
+const mapStateToProps = (state) => {
+    return {
+        myKey: state.myKey
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Means)
