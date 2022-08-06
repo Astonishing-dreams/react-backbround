@@ -5,8 +5,7 @@ import Header from './components/Header';
 import Aside from './components/Aside';
 import Bread from './components/Bread';
 
-
-export default function App() {
+export default function App(props) {
     return (
         <Layout id='app'>
             <Header />
@@ -19,7 +18,15 @@ export default function App() {
                     </div>
                 </div>
             </div>
-            <footer>Respect | Copyright © 2022 Author 你单排吧</footer>
+            <footer>Respect | Copyright © 2022 Author {localStorage.getItem('username')}</footer>
         </Layout>
     )
 }
+
+// const mapStateToProps = (state) => {
+//     return {
+//         myKey: state.myKey
+//     }
+// }
+
+// export default connect(mapStateToProps)(App)

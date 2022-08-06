@@ -16,7 +16,8 @@ export default function Header() {
         let avatarNew = localStorage.getItem('avatar')
         if (usernameNew) setUsername(usernameNew)
         if (avatarNew) setAvatar('http://47.93.114.103:6688/' + avatarNew)
-    })
+        console.log(localStorage.getItem('avatar'));
+    }, [localStorage.getItem('avatar')])
 
     const menuThings = ({ key }) => {
         if (key === '2') {
@@ -24,6 +25,10 @@ export default function Header() {
             localStorage.clear()
             setTimeout(() => {
                 navigate('/login')
+            }, 1000);
+        } else if (key === '1') {
+            setTimeout(() => {
+                navigate('/means')
             }, 1000);
         }
     }
