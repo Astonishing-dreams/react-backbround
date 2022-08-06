@@ -32,8 +32,8 @@ export default function Aside() {
 
     useEffect(() => {
         let path = location.pathname
-        setDefaultKey(path.substring(1))
-    }, [])
+        setDefaultKey(path.split('/')[1])
+    }, [location.pathname])
 
     return (
         <Menu

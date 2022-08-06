@@ -23,12 +23,13 @@ export default function Bread() {
                 break;
 
             default:
+                setBreadName(pathname.includes('edit') ? '文章编辑' : '')
                 break;
         }
     }, [pathname])
 
     return (
-        <Breadcrumb>
+        <Breadcrumb style={{ height: '30px', lineHeight: '30px' }}>
             <Breadcrumb.Item href='/'>
                 <HomeOutlined />
             </Breadcrumb.Item>
