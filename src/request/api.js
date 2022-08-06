@@ -21,6 +21,12 @@ export const ArticleUpdateApi = (params) => request.put('/article/update', param
 // 删除文章
 export const ArticleDelApi = (params) => request.post('/article/remove', params)
 
+// 获取用户资料
+export const GetUserDataApi = () => request.get(`/info`)
+
+// 修改用户资料
+export const ChangeUserApi = (params) => request.put('/info', params)
+
 
 
 
